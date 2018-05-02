@@ -117,7 +117,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                         //take shot of barcode 2
                         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                         scanIntegrator.initiateScan(0);
-
                     }
 
                     else if (result.equalsIgnoreCase("member1")
@@ -126,23 +125,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                             || result.equalsIgnoreCase("member3")
                             || result.equalsIgnoreCase("member4")
                             && passed1) {
-
                         passed1 = false;
                         Toast toast = Toast.makeText(getApplicationContext(), "Opening lock", Toast.LENGTH_SHORT);
                         toast.show();
-
                         //flash LED
                         flashLightOn();
-
                         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                         scanIntegrator.initiateScan(0);
-
-
-                        //Scan again if cont. is checked
-                        //make flash on!
-                        //open door
-                        //FlashLightUtilForL flash = new FlashLightUtilForL(this);
-                        //flash.turnOnFlashLight();
                     }
 
                     else {
@@ -170,8 +159,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "No scan data received!", Toast.LENGTH_SHORT);
                 toast.show();
-
-
             }
         }
         catch (Exception e){
@@ -183,17 +170,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private void flashLightOn() {
         try {
-
             //Camera settings from https://developer.android.com/reference/android/hardware/Camera.html
             android.hardware.Camera.Parameters para;
             android.hardware.Camera cam = android.hardware.Camera.open(0);
             para = cam.getParameters();
             para.setFlashMode(para.FLASH_MODE_TORCH);
             cam.setParameters(para);
-
             //Flash on
             cam.startPreview();
-
             //Delay
             int dum=0;
             for (int i =0;i<999999;i++){
@@ -212,11 +196,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             //Flash off
             cam.stopPreview();
             cam.release();
-
         }
-        catch (Exception e)
-        {
-
-        }
+        catch (Exception e){}
     }
 }
