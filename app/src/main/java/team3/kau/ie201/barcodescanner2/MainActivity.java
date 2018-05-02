@@ -98,7 +98,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         try {
             //get scan result
             IntentResult scanningResult = IntentIntegrator.parseActivityResult(requestCode, resultCode, intent);
-
             // if not empty
             if (scanningResult != null) {
                 String result = scanningResult.getContents();
@@ -113,7 +112,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                         Toast toast = Toast.makeText(getApplicationContext(), "Key 1 Accepted", Toast.LENGTH_SHORT);
                         toast.show();
                         passed1 = true;
-
                         //take shot of barcode 2
                         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                         scanIntegrator.initiateScan(0);
@@ -126,18 +124,13 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                             || result.equalsIgnoreCase("member3")
                             || result.equalsIgnoreCase("member4")
                             && passed1) {
-
                         passed1 = false;
                         Toast toast = Toast.makeText(getApplicationContext(), "Opening lock", Toast.LENGTH_SHORT);
                         toast.show();
-
                         //flash LED
                         flashLightOn();
-
                         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                         scanIntegrator.initiateScan(0);
-
-
                         //Scan again if cont. is checked
                         //make flash on!
                         //open door
@@ -151,26 +144,21 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                         passed1 = false;
                         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                         scanIntegrator.initiateScan(0);
-
-
                     }
 
                 }
-
                 else {
                     Toast toast = Toast.makeText(getApplicationContext(), "Key not accepted", Toast.LENGTH_SHORT);
                     toast.show();
                     passed1 = false;
                     IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                     scanIntegrator.initiateScan(0);
-
                 }
             }
             else {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "No scan data received!", Toast.LENGTH_SHORT);
                 toast.show();
-
 
             }
         }
@@ -183,17 +171,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private void flashLightOn() {
         try {
-
             //Camera settings from https://developer.android.com/reference/android/hardware/Camera.html
             android.hardware.Camera.Parameters para;
             android.hardware.Camera cam = android.hardware.Camera.open(0);
             para = cam.getParameters();
             para.setFlashMode(para.FLASH_MODE_TORCH);
             cam.setParameters(para);
-
             //Flash on
             cam.startPreview();
-
             //Delay
             int dum=0;
             for (int i =0;i<999999;i++){
@@ -212,11 +197,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             //Flash off
             cam.stopPreview();
             cam.release();
-
         }
-        catch (Exception e)
-        {
-
-        }
+        catch (Exception e){}
     }
 }
