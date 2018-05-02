@@ -186,7 +186,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
             //Camera settings from https://developer.android.com/reference/android/hardware/Camera.html
             android.hardware.Camera.Parameters para;
-
             android.hardware.Camera cam = android.hardware.Camera.open(0);
             para = cam.getParameters();
             para.setFlashMode(para.FLASH_MODE_TORCH);
