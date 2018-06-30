@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                         //take shot of barcode 2
                         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                         scanIntegrator.initiateScan(0);
-
                     }
 
                     else if (result.equalsIgnoreCase("member1")
@@ -131,11 +130,6 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                         flashLightOn();
                         IntentIntegrator scanIntegrator = new IntentIntegrator(this);
                         scanIntegrator.initiateScan(0);
-                        //Scan again if cont. is checked
-                        //make flash on!
-                        //open door
-                        //FlashLightUtilForL flash = new FlashLightUtilForL(this);
-                        //flash.turnOnFlashLight();
                     }
 
                     else {
@@ -159,6 +153,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
                 Toast toast = Toast.makeText(getApplicationContext(),
                         "No scan data received!", Toast.LENGTH_SHORT);
                 toast.show();
+
 
             }
         }
