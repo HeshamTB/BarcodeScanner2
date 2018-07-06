@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".infoActivity">
+                    android:parentActivityName=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

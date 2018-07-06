@@ -25,6 +25,7 @@ import android.content.Context;
 import android.widget.ToggleButton;
 
 
+
 import com.google.zxing.integration.android.IntentResult;
 import com.google.zxing.integration.android.IntentIntegrator;
 
@@ -33,6 +34,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 public class MainActivity extends AppCompatActivity implements OnClickListener {
 
     private Button button;
+    private  Button infoButton;
     boolean passed1, passed2 = false;
 
 
@@ -54,6 +56,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         });
         button = (Button)findViewById(R.id.button);//
         button.setOnClickListener(this);//
+        infoButton = findViewById(R.id.infoButton);
+        infoButton.setOnClickListener(this);
 
 
     }
@@ -87,7 +91,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             //start barcode scan cam 1,2
             IntentIntegrator scanIntegrator = new IntentIntegrator(this);
             scanIntegrator.initiateScan(0);
+        }
 
+        if (v.getId() == R.id.infoButton){
+            Intent intent = new Intent(this , infoActivity.class);
+            startActivity(intent);
         }
     }
 	//----------------------------------------------------------------------------------------------------------------------------
