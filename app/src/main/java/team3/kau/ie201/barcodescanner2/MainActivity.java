@@ -166,9 +166,8 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
             }
         }
         catch (Exception e){
-            Toast tost = Toast.makeText(getApplicationContext(), e.toString(),Toast.LENGTH_SHORT);
-            tost.show();
-
+            //Toast tost = Toast.makeText(getApplicationContext(), e.toString(),Toast.LENGTH_SHORT);
+            //tost.show();
         }
     }
 
